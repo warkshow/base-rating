@@ -1,0 +1,25 @@
+html,
+body {
+    height: 100vh;
+}
+
+.bg-main {
+    background-color: #F9FAFC;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+}
+
+.company-tile:hover {
+    -webkit-box-shadow: 0 10px 30px rgba(0, 22, 40, .2);
+    box-shadow: 0 10px 30px rgba(0, 22, 40, .2);
+    cursor: pointer;
+    color: rgb(31, 76, 224);
+}
+.content-border-white{
+    background-color: #fff;
+    width: 100%;
+    border: 1px solid rgba(0,0,0,.125);
+    padding: 15px;
+}
