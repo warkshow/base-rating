@@ -15,6 +15,14 @@ body {
     -webkit-box-shadow: 0 10px 30px rgba(0, 22, 40, .2);
     box-shadow: 0 10px 30px rgba(0, 22, 40, .2);
     cursor: pointer;
+}
+.company-tile a{
+    color: #000;
+    text-decoration: none;
+}
+.company-tile a:hover{
+    color: #000;
+    text-decoration: none;
     color: rgb(31, 76, 224);
 }
 .content-border-white{
