@@ -1,6 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-use applications\core\Router;
+use application\core\Router;
 
 spl_autoload_register(function ($class) {
     $path = str_replace("\\", "/", "$class.php");

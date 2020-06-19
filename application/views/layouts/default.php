@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-    <title>Компании</title>
+    <title><?php echo $title; ?></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,11 +20,14 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
                     <ul class="navbar-nav mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/">Главная<span class="sr-only">(current)</span></a>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Главная</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Доска объявлений</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/company">Компании</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Выпадающее меню</a>
@@ -83,127 +86,7 @@
     </div>
 
 
-    <section class="container py-4">
-        <!-- Реклама -->
-        <?php //echo file_get_contents("https://www.njk.ee"); 
-        ?>
-    </section>
-
-    <section class="container-fluid content-border-white py-4">
-        <div class="container">
-            <div class="row text-center">
-
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col col-lg-4 py-4">
-                    <div class="card company-tile">
-                        <a href="#">
-                            <img src="https://otrude.net/public/images/company_img/f04a57ad2481a61fd2960ef32f78f44b.svg" class="img-fluid p-4" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Название компании</h5>
-                                <p class="card-text">Какое-то небольшое описание компании хотябы для того чтобы небыло так пусто на странице</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </section>
-
-    <section class="container py-4">
-
-    </section>
-
+    <?php echo $content; ?>
 
     <footer>
         <div class="container-fluid content-border-white p-0">
