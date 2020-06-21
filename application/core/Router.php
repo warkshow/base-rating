@@ -8,18 +8,21 @@ class Router
 {
     /**
      * Таблица маршуртов
+     * 
      *  @var array
      */
     private static $routes = [];
 
     /**
      * Текущий маршрут
+     * 
      * @var array
      */
     protected static $route = [];
 
     /**
      * Добавляет маршрут в таблицу маршрута
+     * 
      * @param string $regexp Регулярное выражение
      * @param array $route маршрут([controller, action, params])
      */
@@ -31,6 +34,7 @@ class Router
 
     /**
      * Возвращает таблицу маршрутов
+     * 
      * @return array
      */
     public static function getRoutes()
@@ -40,6 +44,7 @@ class Router
 
     /**
      * Возвращает текущий маршрут
+     * 
      * @return array
      */
     public static function getRoute()
@@ -49,6 +54,7 @@ class Router
 
     /**
      * Ищет URL в таблице маршрутов
+     * 
      * @param string $url Входящий URL
      * @return boolean
      */
@@ -73,11 +79,15 @@ class Router
 
     /**
      * Перенаправляет URL по корректному маршруту
+     * 
      * @param string $url Входящий URL
      * @return void
      */
     public static function dispatch($url)
     {
+        $url = self::removeQueryString($url);
+        debug($url);
+        debug($_GET);
         if (self::matchRoute($url)) {
             $pathController = 'application\\controllers\\';
             $controller = $pathController . self::upperCamelCase(self::$route['controller'] . "Controller");
@@ -99,6 +109,7 @@ class Router
 
     /**
      * Делает слова с большой буквы
+     * 
      * @return string
      */
     protected static function upperCamelCase($name)
@@ -109,8 +120,32 @@ class Router
         return $name;
     }
 
+    /**
+     * Делает первую букву большой
+     * 
+     * @return string
+     */
     protected static function lowerCamelCase($name)
     {
         return lcfirst(self::upperCamelCase($name));
+    }
+
+    /**
+     * Возвращает запрашиваемый URL
+     *
+     * @param string $url
+     * @return string
+     */
+    protected static function removeQueryString($url)
+    {
+        if ($url) {
+            $params = explode('?', $url);
+            if (false === strpos($params[0], '=')) {
+                return rtrim($params[0], '/');
+            } else {
+                return '';
+            }
+        }
+        return $url;
     }
 }

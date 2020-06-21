@@ -21,6 +21,7 @@ function debug($param)
 $query = rtrim($_SERVER["REQUEST_URI"], '/');
 session_start();
 $router = new Router;
+// debug($_GET);
 
 // Стандартные правила
 $router::add('^$', ['controller' => 'Main', 'action' => 'index']);

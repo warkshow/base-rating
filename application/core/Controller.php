@@ -2,7 +2,6 @@
 
 namespace application\core;
 
-
 abstract class Controller
 {
     public $currentRoute = [];

@@ -3,7 +3,6 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use application\core\Router;
 use application\lib\Pagination;
 
 class MainController extends Controller
@@ -12,7 +11,7 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        // debug($this->currentRoute);
+        debug($this->currentRoute);
     }
     public function companyAction()
     {
