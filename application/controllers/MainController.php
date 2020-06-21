@@ -3,16 +3,16 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use application\core\Router;
 use application\lib\Pagination;
 
 class MainController extends Controller
 {
 
+
     public function indexAction()
     {
-        // $this->view->layout = "kek";
-
-        $this->view->render('Главная страница');
+        // debug($this->currentRoute);
     }
     public function companyAction()
     {

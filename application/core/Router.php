@@ -6,53 +6,111 @@ use application\core\View;
 
 class Router
 {
-    protected $routes = [];
-    protected $params = [];
+    /**
+     * Таблица маршуртов
+     *  @var array
+     */
+    private static $routes = [];
 
-    function __construct()
+    /**
+     * Текущий маршрут
+     * @var array
+     */
+    protected static $route = [];
+
+    /**
+     * Добавляет маршрут в таблицу маршрута
+     * @param string $regexp Регулярное выражение
+     * @param array $route маршрут([controller, action, params])
+     */
+
+    public static function add($regexp, $route = [])
     {
-        $arr = require 'application/config/routes.php';
-        foreach ($arr as $key => $value) {
-            $this->add($key, $value);
-        }
-        // debug($this->routes);
+        self::$routes[$regexp] = $route;
     }
 
-    public function add($route, $params)
+    /**
+     * Возвращает таблицу маршрутов
+     * @return array
+     */
+    public static function getRoutes()
     {
-        $route = "#^$route$#";
-        $this->routes[$route] = $params;
+        return self::$routes;
     }
-    public function match()
+
+    /**
+     * Возвращает текущий маршрут
+     * @return array
+     */
+    public static function getRoute()
     {
-        $url = trim($_SERVER['REQUEST_URI'], '/');
-        $segments = explode('/', $url);
-        var_dump($segments);
-        foreach ($this->routes as $route => $params) {
-            if (preg_match($route, $url, $matches)) {
-                $this->params = $params;
+        return self::$route;
+    }
+
+    /**
+     * Ищет URL в таблице маршрутов
+     * @param string $url Входящий URL
+     * @return boolean
+     */
+    public static function matchRoute($url)
+    {
+        foreach (self::$routes as $pattern => $route) {
+            if (preg_match("#$pattern#i", $url, $matches)) {
+                foreach ($matches as $key => $value) {
+                    if (is_string($key)) {
+                        $route[$key] = $value;
+                    }
+                }
+                if (!isset($route['action'])) {
+                    $route['action'] = 'index';
+                }
+                self::$route = $route;
                 return true;
             }
         }
         return false;
     }
-    public function run()
+
+    /**
+     * Перенаправляет URL по корректному маршруту
+     * @param string $url Входящий URL
+     * @return void
+     */
+    public static function dispatch($url)
     {
-        if ($this->match()) {
-            $path = 'application\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
-            if (class_exists($path)) {
-                $action = $this->params['action'] . 'Action';
-                if (method_exists($path, $action)) {
-                    $controller = new $path($this->params);
-                    $controller->$action();
+        if (self::matchRoute($url)) {
+            $pathController = 'application\\controllers\\';
+            $controller = $pathController . self::upperCamelCase(self::$route['controller'] . "Controller");
+            if (class_exists($controller)) {
+                $createClass = new $controller(self::$route);
+                $action = self::lowerCamelCase(self::$route['action'] . "Action");
+                if (method_exists($createClass, $action)) {
+                    $createClass->$action();
                 } else {
-                    View::errorCode(404);
+                    echo "Метод $action не найден в $createClass";
                 }
             } else {
-                View::errorCode(404);
+                echo "Не нашел controller: $controller";
             }
         } else {
-            View::errorCode(404);
+            echo "Не найден маршрут";
         }
+    }
+
+    /**
+     * Делает слова с большой буквы
+     * @return string
+     */
+    protected static function upperCamelCase($name)
+    {
+        $name = str_replace('-', ' ', $name);
+        $name = ucfirst($name);
+        $name = str_replace(' ', '', $name);
+        return $name;
+    }
+
+    protected static function lowerCamelCase($name)
+    {
+        return lcfirst(self::upperCamelCase($name));
     }
 }
