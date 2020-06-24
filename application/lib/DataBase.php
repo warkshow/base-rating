@@ -4,34 +4,61 @@ namespace application\lib;
 
 use PDO;
 
+/**
+ * Класс для работы с базой данных
+ */
 class DataBase
 {
-    protected $db;
-    function __construct()
+    protected $pdo;
+    protected static $instance;
+    public static $countSQL = 0;
+    public static $queries = [];
+    protected function __construct()
     {
         $config = require 'application/config/database.php';
-        $this->db = new PDO('mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'] . '', $config['user'], $config['password']);
+        $options = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ];
+        $this->pdo = new PDO('mysql:host=' . $config['host'] . ';dbname=' . $config['dbname'] . ';charset=utf8', $config['user'], $config['password'], $options);
+    }
+    public static function instance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self;
+        }
+        return self::$instance;
+    }
+    /**
+     * Выполняет какую-то команду без возвращения данных из БД
+     *
+     * @param string $sql Запрос к БД
+     * @return boolean
+     */
+    public function execute($sql, $params = [])
+    {
+        $this->saveSQL($sql);
+        self::$countSQL++;
+        self::$queries[] = $sql;
+        $statement =  $this->pdo->prepare($sql);
+        return $statement->execute($params);
     }
 
-    private function query($sql, $params = [])
+    public function query($sql, $params = [])
     {
-        $statement = $this->db->prepare($sql);
-        if (!empty($params)) {
-            foreach ($params as $key => $value) {
-                $statement->bindValue(":$key", $value);
-            }
+        $this->saveSQL($sql);
+        $statement = $this->pdo->prepare($sql);
+        $result = $statement->execute($params);
+        if ($result !== false) {
+            return $statement->fetchAll();
+        } else {
+            return [];
         }
-        $statement->execute();
-        return $statement;
     }
-    public function row($sql, $params = [])
+
+    protected function saveSQL($sql)
     {
-        $result = $this->query($sql, $params);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function column($sql, $params = [])
-    {
-        $result = $this->query($sql, $params);
-        return $result->fetchColumn();
+        self::$countSQL++;
+        self::$queries[] = $sql;
     }
 }

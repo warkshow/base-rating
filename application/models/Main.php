@@ -6,8 +6,5 @@ use application\core\Model;
 
 class Main extends Model
 {
-    public function getNews()
-    {
-        debug($this->db);
-    }
+    public $table = 'users';
 }

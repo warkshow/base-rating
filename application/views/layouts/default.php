@@ -2,10 +2,12 @@
 <html lang="ru">
 
 <head>
-    <title><?php echo $title; ?></title>
+    <title><?= $meta['title']; ?></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="<?= $meta['desc']; ?>">
+    <meta name="keywords" content="<?= $meta['keywords']; ?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/styles/main.css">
 </head>
@@ -41,49 +43,6 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid pb-4">
-        <form action="" method="post" class="needs-validation shadow-sm" novalidate>
-            <div class="row justify-content-md-center text-center">
-                <div class="content-border-white" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Поиск компании</h5>
-                        <div class="form-row py-4 justify-content-md-center">
-                            <div class="form-group col-md-4">
-                                <input type="text" class="form-control" id="inputCity" placeholder="Название компании" required>
-                                <div class="valid-feedback">Ввод верен</div>
-                                <div class="invalid-feedback">Введет не правильно название компании</div>
-                            </div>
-                            <div class="form-group col-md-3 ">
-                                <select id="inputCategory" class="form-control">
-                                    <optgroup label="Автомобили">
-                                        <option>Автосервисы</option>
-                                        <option>Автомойки</option>
-                                        <option>Заправки</option>
-                                    </optgroup>
-                                    <optgroup label="Образовательные учереждения">
-                                        <option>Проф. тех. училища</option>
-                                        <option>Школы</option>
-                                        <option>Институты</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-2">
-                                <select id="inputState" class="form-control">
-                                    <option selected>Все</option>
-                                    <option>Эстония</option>
-                                    <option>Украина</option>
-                                    <option>Латвия</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary ">Поиск</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
 
 
     <?php echo $content; ?>

@@ -21,10 +21,11 @@ function debug($param)
 $query = rtrim($_SERVER["REQUEST_URI"], '/');
 session_start();
 $router = new Router;
-// debug($_GET);
+$router->add('^/company$', ['controller' => 'Main', 'action' => 'company']);
 
 // Стандартные правила
-$router::add('^$', ['controller' => 'Main', 'action' => 'index']);
-$router::add('^(?P<controller>[a-z-]+)/(?P<action>[a-z-]+)$');
+$router->add('^$', ['controller' => 'Main', 'action' => 'index']);
+$router->add('^(?P<controller>[a-z-]+)/(?P<action>[a-z-]+)$');
+$router->add('^(?P<controller>[a-z-]+)$', ['action' => 'index']);
 
-$router::dispatch($query);
+$router->dispatch($query);

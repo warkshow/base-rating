@@ -11,14 +11,14 @@ class Router
      * 
      *  @var array
      */
-    private static $routes = [];
+    private $routes = [];
 
     /**
      * Текущий маршрут
      * 
      * @var array
      */
-    protected static $route = [];
+    protected $route = [];
 
     /**
      * Добавляет маршрут в таблицу маршрута
@@ -27,9 +27,9 @@ class Router
      * @param array $route маршрут([controller, action, params])
      */
 
-    public static function add($regexp, $route = [])
+    public function add($regexp, $route = [])
     {
-        self::$routes[$regexp] = $route;
+        $this->routes[$regexp] = $route;
     }
 
     /**
@@ -37,7 +37,7 @@ class Router
      * 
      * @return array
      */
-    public static function getRoutes()
+    public function getRoutes()
     {
         return self::$routes;
     }
@@ -47,7 +47,7 @@ class Router
      * 
      * @return array
      */
-    public static function getRoute()
+    public function getRoute()
     {
         return self::$route;
     }
@@ -58,9 +58,9 @@ class Router
      * @param string $url Входящий URL
      * @return boolean
      */
-    public static function matchRoute($url)
+    public function matchRoute($url)
     {
-        foreach (self::$routes as $pattern => $route) {
+        foreach ($this->routes as $pattern => $route) {
             if (preg_match("#$pattern#i", $url, $matches)) {
                 foreach ($matches as $key => $value) {
                     if (is_string($key)) {
@@ -70,7 +70,7 @@ class Router
                 if (!isset($route['action'])) {
                     $route['action'] = 'index';
                 }
-                self::$route = $route;
+                $this->route = $route;
                 return true;
             }
         }
@@ -83,19 +83,18 @@ class Router
      * @param string $url Входящий URL
      * @return void
      */
-    public static function dispatch($url)
+    public function dispatch($url)
     {
-        $url = self::removeQueryString($url);
-        debug($url);
-        debug($_GET);
-        if (self::matchRoute($url)) {
+        $url = $this->removeQueryString($url);
+        if ($this->matchRoute($url)) {
             $pathController = 'application\\controllers\\';
-            $controller = $pathController . self::upperCamelCase(self::$route['controller'] . "Controller");
+            $controller = $pathController . $this->upperCamelCase($this->route['controller'] . "Controller");
             if (class_exists($controller)) {
-                $createClass = new $controller(self::$route);
-                $action = self::lowerCamelCase(self::$route['action'] . "Action");
+                $createClass = new $controller($this->route);
+                $action = $this->lowerCamelCase($this->route['action'] . "Action");
                 if (method_exists($createClass, $action)) {
                     $createClass->$action();
+                    $createClass->getView();
                 } else {
                     echo "Метод $action не найден в $createClass";
                 }
@@ -112,7 +111,7 @@ class Router
      * 
      * @return string
      */
-    protected static function upperCamelCase($name)
+    protected function upperCamelCase($name)
     {
         $name = str_replace('-', ' ', $name);
         $name = ucfirst($name);
@@ -125,18 +124,18 @@ class Router
      * 
      * @return string
      */
-    protected static function lowerCamelCase($name)
+    protected function lowerCamelCase($name)
     {
-        return lcfirst(self::upperCamelCase($name));
+        return lcfirst($this->upperCamelCase($name));
     }
 
     /**
-     * Возвращает запрашиваемый URL
+     * Возвращает строку без GET параметров
      *
      * @param string $url
      * @return string
      */
-    protected static function removeQueryString($url)
+    protected function removeQueryString($url)
     {
         if ($url) {
             $params = explode('?', $url);

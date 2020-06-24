@@ -3,7 +3,7 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use application\lib\Pagination;
+use application\models\Main;
 
 class MainController extends Controller
 {
@@ -11,14 +11,18 @@ class MainController extends Controller
 
     public function indexAction()
     {
-        debug($this->currentRoute);
+        $model = new Main;
+        $model->table = 'users';
+        $users = $model->findLike(".ru", "email");
+        $this->setMeta("Главная страница", "Описание слов", "Ключевые слова");
+        $meta = $this->meta;
+        $this->setParam(compact('users', "meta"));
     }
     public function companyAction()
     {
-        $pagination = new Pagination($this->route, 100);
-        $vars = [
-            'pagination' => $pagination->get()
+        $params = [
+            'title' => 'Каталог компаний'
         ];
-        $this->view->render("Каталог компаний", $vars);
+        $this->setParam($params);
     }
 }
