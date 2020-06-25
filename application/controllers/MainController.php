@@ -3,7 +3,9 @@
 namespace application\controllers;
 
 use application\core\Controller;
+use application\core\Registry;
 use application\models\Main;
+use application\core\App;
 
 class MainController extends Controller
 {
@@ -13,10 +15,9 @@ class MainController extends Controller
     {
         $model = new Main;
         $model->table = 'users';
-        $users = $model->findLike(".ru", "email");
         $this->setMeta("Главная страница", "Описание слов", "Ключевые слова");
         $meta = $this->meta;
-        $this->setParam(compact('users', "meta"));
+        $this->setParam(compact("meta"));
     }
     public function companyAction()
     {

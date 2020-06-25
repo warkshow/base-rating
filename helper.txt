@@ -26,26 +26,6 @@ routes{
 }
 
 //////////////////////////////////////////////////////////////////////////////////
-
-acl:
-all{
-    index
-    rating
-}
-authorize{
-    profile
-    logout
-}
-guest{
-    login
-    register
-}
-admin{
-    add
-    delete
-    edit
-}
-//////////////////////////
 DataBase
 
 users{
@@ -61,6 +41,9 @@ users{
     telefon
     country
     city
+    data_register
+    register_ip
+    last_session
 }
 access{
     id

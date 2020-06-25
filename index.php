@@ -3,6 +3,11 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 use application\core\Router;
+use application\core\App;
+
+define('TEMP', "temp");
+
+
 
 spl_autoload_register(function ($class) {
     $path = str_replace("\\", "/", "$class.php");
@@ -20,6 +25,8 @@ function debug($param)
 }
 $query = rtrim($_SERVER["REQUEST_URI"], '/');
 session_start();
+
+new App;
 $router = new Router;
 $router->add('^/company$', ['controller' => 'Main', 'action' => 'company']);
 
