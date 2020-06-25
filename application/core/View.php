@@ -55,4 +55,12 @@ class View
             }
         }
     }
+    public static function Error($code)
+    {
+        $file = "application/views/errors/$code.php";
+        if (file_exists($file)) {
+            require $file;
+        }
+        http_response_code($code);
+    }
 }

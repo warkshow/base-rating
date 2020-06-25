@@ -1,9 +1,13 @@
     <section class="container py-4">
-        <!-- Реклама -->
+        Реклама
         <?php //echo file_get_contents("https://www.njk.ee"); 
         ?>
     </section>
-
+    <?php
+    if (isset($category)) {
+        echo "Текущая категория: " . $category;
+    }
+    ?>
     <section class="container-fluid content-border-white py-4">
         <div class="container">
             <div class="row text-center">

@@ -3,7 +3,6 @@
 namespace application\controllers;
 
 use application\core\Controller;
-use application\core\Registry;
 use application\models\Main;
 use application\core\App;
 
@@ -21,9 +20,15 @@ class MainController extends Controller
     }
     public function companyAction()
     {
-        $params = [
-            'title' => 'Каталог компаний'
-        ];
-        $this->setParam($params);
+        $this->setMeta("Каталог компаний", "Описание слов", "Ключевые слова");
+        $meta = $this->meta;
+
+        if (isset($this->route['alias'])) {
+            $category = $this->route['alias'];
+        } else {
+            $category = null;
+        }
+
+        $this->setParam(compact("meta", "category"));
     }
 }

@@ -28,7 +28,9 @@ session_start();
 
 new App;
 $router = new Router;
+
 $router->add('^/company$', ['controller' => 'Main', 'action' => 'company']);
+$router->add('^/company/(?P<alias>[a-z-]+)$', ['controller' => 'Main', 'action' => 'company']);
 
 // Стандартные правила
 $router->add('^$', ['controller' => 'Main', 'action' => 'index']);

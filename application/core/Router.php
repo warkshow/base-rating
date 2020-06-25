@@ -85,7 +85,7 @@ class Router
      */
     public function dispatch($url)
     {
-        $url = $this->removeQueryString($url);
+        $url = $this->removeQueryString($url, '?');
         if ($this->matchRoute($url)) {
             $pathController = 'application\\controllers\\';
             $controller = $pathController . $this->upperCamelCase($this->route['controller'] . "Controller");
@@ -102,7 +102,7 @@ class Router
                 echo "Не нашел controller: $controller";
             }
         } else {
-            echo "Не найден маршрут";
+            View::Error(404);
         }
     }
 
@@ -120,7 +120,7 @@ class Router
     }
 
     /**
-     * Делает первую букву большой
+     * Делает первую букву большой, а остальные маленькими
      * 
      * @return string
      */
@@ -135,10 +135,10 @@ class Router
      * @param string $url
      * @return string
      */
-    protected function removeQueryString($url)
+    protected function removeQueryString($url, $sym)
     {
         if ($url) {
-            $params = explode('?', $url);
+            $params = explode($sym, $url);
             if (false === strpos($params[0], '=')) {
                 return rtrim($params[0], '/');
             } else {

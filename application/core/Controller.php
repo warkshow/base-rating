@@ -11,7 +11,7 @@ abstract class Controller
      *
      * @var array
      */
-    public $currentRoute = [];
+    public $route = [];
     /**
      * Вид
      *
@@ -40,12 +40,12 @@ abstract class Controller
     public $title = 'Главная старница';
     public function __construct($route)
     {
-        $this->currentRoute = $route;
+        $this->route = $route;
         $this->view = $route['action'];
     }
     public function getView()
     {
-        $createView = new View($this->currentRoute, $this->view, $this->layout);
+        $createView = new View($this->route, $this->view, $this->layout);
         $createView->render($this->vars);
     }
     public function setParam($vars = [])
