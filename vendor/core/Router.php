@@ -1,64 +1,58 @@
 <?php
 
-namespace application\core;
-
-use application\core\View;
+namespace vendor\core;
 
 class Router
 {
     /**
-     * Таблица маршуртов
-     * 
-     *  @var array
+     * Таблица маршрутов
+     *
+     * @var array Все маршруты
      */
-    private $routes = [];
-
+    protected $routes = [];
     /**
      * Текущий маршрут
-     * 
-     * @var array
+     *
+     * @var array Текущий маршрут
      */
     protected $route = [];
 
     /**
-     * Добавляет маршрут в таблицу маршрута
-     * 
+     * Добавление маршрутов
+     *
      * @param string $regexp Регулярное выражение
-     * @param array $route маршрут([controller, action, params])
+     * @param array $route Добавленный маршрут
+     * @return void
      */
-
     public function add($regexp, $route = [])
     {
         $this->routes[$regexp] = $route;
     }
-
     /**
-     * Возвращает таблицу маршрутов
-     * 
-     * @return array
+     * Отдает таблицу маршрутов
+     *
+     * @return array Таблицы маршрутов
      */
     public function getRoutes()
     {
-        return self::$routes;
+        return $this->routes;
     }
-
     /**
      * Возвращает текущий маршрут
-     * 
-     * @return array
+     *
+     * @return array Текущий маршрут
      */
     public function getRoute()
     {
-        return self::$route;
+        return $this->route;
     }
-
     /**
      * Ищет URL в таблице маршрутов
-     * 
-     * @param string $url Входящий URL
+     *
+     * @param string $url Текущий URL
      * @return boolean
      */
-    public function matchRoute($url)
+    protected function matchRoute($url)
     {
         foreach ($this->routes as $pattern => $route) {
             if (preg_match("#$pattern#i", $url, $matches)) {
@@ -70,6 +64,7 @@ class Router
                 if (!isset($route['action'])) {
                     $route['action'] = 'index';
                 }
+                $route['controller'] = $this->upperCamelCase($route['controller']);
                 $this->route = $route;
                 return true;
             }
@@ -79,72 +74,64 @@ class Router
 
     /**
      * Перенаправляет URL по корректному маршруту
-     * 
+     *
      * @param string $url Входящий URL
      * @return void
      */
     public function dispatch($url)
     {
-        $url = $this->removeQueryString($url, '?');
+        $url = $this->removeQueryString($url);
         if ($this->matchRoute($url)) {
-            $pathController = 'application\\controllers\\';
-            $controller = $pathController . $this->upperCamelCase($this->route['controller'] . "Controller");
+
+            $controllerPath = 'app\controllers\\';
+            $controller = $controllerPath . $this->upperCamelCase($this->route['controller']) . "Controller";
+
             if (class_exists($controller)) {
-                $createClass = new $controller($this->route);
-                $action = $this->lowerCamelCase($this->route['action'] . "Action");
-                if (method_exists($createClass, $action)) {
-                    $createClass->$action();
-                    $createClass->getView();
+                $controllerObject = new $controller($this->route);
+                $action = $this->lowerCamelCase($this->route['action']) . "Action";
+                if (method_exists($controllerObject, $action)) {
+                    $controllerObject->$action();
+                    $controllerObject->getView();
                 } else {
-                    echo "Метод $action не найден в $createClass";
+                    echo "Метод <b>$controller::$action</b> не найден";
                 }
             } else {
-                echo "Не нашел controller: $controller";
+                echo "Контроллер <b>$controller</b> не найден";
             }
         } else {
-            View::Error(404);
+            http_response_code(404);
+            require "404.html";
         }
     }
 
-    /**
-     * Делает слова с большой буквы
-     * 
-     * @return string
-     */
     protected function upperCamelCase($name)
     {
         $name = str_replace('-', ' ', $name);
-        $name = ucfirst($name);
+        $name = ucwords($name);
         $name = str_replace(' ', '', $name);
+        return $name;
+    }
+    protected function lowerCamelCase($name)
+    {
+        $name = $this->upperCamelCase($name);
+        $name = lcfirst($name);
         return $name;
     }
 
     /**
-     * Делает первую букву большой, а остальные маленькими
-     * 
-     * @return string
-     */
-    protected function lowerCamelCase($name)
-    {
-        return lcfirst($this->upperCamelCase($name));
-    }
-
-    /**
-     * Возвращает строку без GET параметров
+     * Обрезает возможные GET параметры
      *
-     * @param string $url
-     * @return string
+     * @return void
      */
-    protected function removeQueryString($url, $sym)
+    protected function removeQueryString($url)
     {
         if ($url) {
-            $params = explode($sym, $url);
+            $params = explode('&', $url, 2);
             if (false === strpos($params[0], '=')) {
                 return rtrim($params[0], '/');
             } else {
                 return '';
             }
         }
-        return $url;
     }
 }

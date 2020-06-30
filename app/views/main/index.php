@@ -1,3 +1,14 @@
+<div class="card text-left">
+    <div class="card-body">
+        <p class="card-text">
+            <?php if (!empty($users)) : ?>
+                <?php foreach ($users as $user) : ?>
+                    <?php echo $user['username']; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </p>
+    </div>
+</div>
 <div class="container-fluid pb-4">
     <form action="" method="post" class="needs-validation shadow-sm" novalidate>
         <div class="row justify-content-md-center text-center">
@@ -43,6 +54,7 @@
 </div>
 
 <section class="container py-5">
+    <button type="button" name="" id="test" class="btn btn-primary btn-lg btn-block">TEST</button>
     <div class="row justify-content-md-center">
         <div class="col col-lg-5">
             <div class="card-body">
@@ -208,3 +220,23 @@
         </div>
     </section>
 </section>
+
+<script>
+    $(function() {
+        $('#test').click(function() {
+            $.ajax({
+                url: '/ajax',
+                type: 'post',
+                data: {
+                    'id': '3'
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+                error: function() {
+                    alert("Ошибочка");
+                }
+            });
+        });
+    });
+</script>

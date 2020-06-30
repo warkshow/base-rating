@@ -30,22 +30,22 @@ users{
     id
     username
     password
-    accessid
+    roleid
     firstname
     lastname
     age
     sex
     email
     telefon
-    country
+    countryid
     city
     data_register
     register_ip
     last_session
 }
-access{
+role
     id
-    accessname:{
+    rolename:{
         Администратор
         Редактор
         Работодатель || Предаставитель компании
@@ -62,7 +62,7 @@ company{
     id
     companyname
     categoryid
-    country
+    countryid
     city
     userid
     datetime
@@ -79,6 +79,10 @@ feedback{
     userip
     comment
     datetime
+}
+country{
+    id
+    countryname
 }
 
 

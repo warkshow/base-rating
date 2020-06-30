@@ -1,8 +1,8 @@
 <?php
 
-namespace application\models;
+namespace app\models;
 
-use application\core\Model;
+use vendor\core\base\Model;
 
 class Main extends Model
 {

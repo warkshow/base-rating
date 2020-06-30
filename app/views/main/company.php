@@ -1,7 +1,5 @@
     <section class="container py-4">
         Реклама
-        <?php //echo file_get_contents("https://www.njk.ee"); 
-        ?>
     </section>
     <?php
     if (isset($category)) {
