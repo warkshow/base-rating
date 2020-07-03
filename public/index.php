@@ -1,12 +1,17 @@
 <?php
 error_reporting(E_ALL);
 
+use vendor\core\base\App;
 use vendor\core\Router;
 
 define('WWW', __DIR__);
 define('CORE', dirname(__DIR__) . '/vendore/core');
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
+define('CONFIG', dirname(__DIR__) . '/config');
+define('CACHE', dirname(__DIR__) . '/cache');
+
+
 define('LAYOUT', 'default');
 
 
@@ -28,6 +33,7 @@ spl_autoload_register(function ($class) {
     }
 });
 
+new App;
 $router = new Router;
 
 // Не стандартные правила

@@ -1,14 +1,3 @@
-<div class="card text-left">
-    <div class="card-body">
-        <p class="card-text">
-            <?php if (!empty($users)) : ?>
-                <?php foreach ($users as $user) : ?>
-                    <?php echo $user['username']; ?>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </p>
-    </div>
-</div>
 <div class="container-fluid pb-4">
     <form action="" method="post" class="needs-validation shadow-sm" novalidate>
         <div class="row justify-content-md-center text-center">

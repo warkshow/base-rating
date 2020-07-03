@@ -15,7 +15,7 @@ class DataBase
 
     protected function __construct()
     {
-        $config = require ROOT . '/config/dataBaseConfig.php';
+        $config = require CONFIG . '/dataBaseConfig.php';
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
@@ -31,17 +31,27 @@ class DataBase
         return self::$instance;
     }
 
-    public function execute($sql)
+    public function execute($sql, $params = [])
     {
         $this->saveSql($sql);
         $statement = $this->pdo->prepare($sql);
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                $statement->bindValue($key, $value);
+            }
+        }
         return $statement->execute();
     }
 
-    public function query($sql)
+    public function query($sql, $params = [])
     {
         $this->saveSql($sql);
         $statement = $this->pdo->prepare($sql);
+        if (!empty($params)) {
+            foreach ($params as $key => $value) {
+                $statement->bindValue($key, $value);
+            }
+        }
         $result = $statement->execute();
         if ($result !== false) {
             return $statement->fetchAll();

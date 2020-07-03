@@ -17,30 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/styles/main.css">
-    <style>
-        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-        /*================================================*/
-        @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-        .carousel {
-            width: 100%;
-        }
-
-        .carousel-item>div {
-            float: left;
-        }
-
-        .carousel-by-item [class*="cloneditem-"] {
-            display: none;
-        }
-    </style>
 </head>
 
 <body class="bg-main">
-    <?php
-    echo "Количество запросов: " . DataBase::$countSql;
-    debug(DataBase::$queries);
-    ?>
     <header>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container">
@@ -142,9 +121,22 @@
         </div>
     </div>
     <!-- End Modal Register -->
-    <div class="container">
-
+    <div class="container-fluid p-0" data-spy='scroll' data-offset='50'>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center"><?= "Количество запросов: " . DataBase::$countSql; ?></h5>
+                <p class="card-text"><?= debug(DataBase::$queries); ?></p>
+            </div>
+            <div class="card-footer text-muted">
+                <?php if (!empty($users)) : ?>
+                    <?php foreach ($users as $user) : ?>
+                        <?php echo $user['username'] . "<br>"; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
+
     <?php echo $content; ?>
 
     <footer>
