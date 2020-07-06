@@ -2,6 +2,8 @@
 
 namespace vendor\core;
 
+use vendor\core\base\View;
+
 class Router
 {
     /**
@@ -99,11 +101,16 @@ class Router
                 echo "Контроллер <b>$controller</b> не найден";
             }
         } else {
-            http_response_code(404);
-            require "404.html";
+            View::Errors(404);
         }
     }
 
+    /**
+     * Изменяет первые буквы слова на большие и объеденяет их
+     *
+     * @param string $name строка которую преобразовать
+     * @return string
+     */
     protected function upperCamelCase($name)
     {
         $name = str_replace('-', ' ', $name);
@@ -111,6 +118,13 @@ class Router
         $name = str_replace(' ', '', $name);
         return $name;
     }
+
+    /**
+     * Преобразует первую букву строки в маленькую
+     *
+     * @param string $name
+     * @return string
+     */
     protected function lowerCamelCase($name)
     {
         $name = $this->upperCamelCase($name);

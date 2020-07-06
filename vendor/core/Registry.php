@@ -4,6 +4,11 @@ namespace vendor\core;
 
 class Registry
 {
+    /**
+     * Список объектов
+     *
+     * @var array
+     */
     public static $objects = [];
     protected static $instance;
 
@@ -36,6 +41,11 @@ class Registry
         }
     }
 
+    /**
+     * Получает список зарегистрированных
+     *
+     * @return void
+     */
     public function getList()
     {
         debug(self::$objects);

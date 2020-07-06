@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <?php
 
-    //use application\core\View;
-
-    //View::getMeta(); 
-
+    use vendor\core\base\View;
     use vendor\core\DataBase;
+
+    View::getMeta();
+
 
     ?>
     <!-- Required meta tags -->

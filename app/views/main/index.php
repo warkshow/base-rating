@@ -43,7 +43,6 @@
 </div>
 
 <section class="container py-5">
-    <button type="button" name="" id="test" class="btn btn-primary btn-lg btn-block">TEST</button>
     <div class="row justify-content-md-center">
         <div class="col col-lg-5">
             <div class="card-body">

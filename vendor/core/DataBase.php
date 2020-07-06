@@ -31,6 +31,13 @@ class DataBase
         return self::$instance;
     }
 
+    /**
+     * Выполняет произвольный запрос
+     *
+     * @param string $sql строка запроса
+     * @param array $params параметры
+     * @return array данные из базы данных
+     */
     public function execute($sql, $params = [])
     {
         $this->saveSql($sql);
@@ -43,6 +50,13 @@ class DataBase
         return $statement->execute();
     }
 
+    /**
+     * Выполняет запрос с возвращаемыми параметрами
+     *
+     * @param string $sql строка запроса
+     * @param array $params параметры
+     * @return array данные из базы данных
+     */
     public function query($sql, $params = [])
     {
         $this->saveSql($sql);
@@ -58,6 +72,13 @@ class DataBase
         }
         return [];
     }
+
+    /**
+     * Сохраняет запросы для отладки
+     *
+     * @param string $sql строка запроса
+     * @return void
+     */
     protected function saveSql($sql)
     {
         self::$countSql++;
