@@ -4,7 +4,6 @@ namespace vendor\core\base;
 
 class View
 {
-
     /**
      * Текущий маршрут
      *
@@ -32,6 +31,13 @@ class View
      * @var array
      */
     public static $meta;
+
+    /**
+     * Хранятся все скрипты
+     * 
+     * @var array
+     */
+    public $scripts = [];
 
     public function __construct($route, $layout = '', $view = '')
     {
@@ -65,6 +71,11 @@ class View
         if (false !== $this->layout) {
             $pathLayout = APP . "/views/layouts/{$this->layout}.php";
             if (file_exists($pathLayout)) {
+                $scripts = [];
+                $content = $this->cutScripts($content);
+                if (!empty($this->scripts[0])) {
+                    $scripts = $this->scripts[0];
+                }
                 require $pathLayout;
             } else {
                 echo "Шаблон: <b>$pathLayout не найден</b>";
@@ -114,5 +125,21 @@ class View
         echo "<title>" . self::$meta['title'] . "</title>";
         echo "<meta name='description' content='" . self::$meta['desc'] . "'>";
         echo "<meta name='keywords' content='" . self::$meta['keywords'] . "'>";
+    }
+
+    /**
+     * Вырезает скрипты, и вставляет их в $scripts
+     *
+     * @param string $content контент страницы откуда вырезать
+     * @return string возвращает контент страницы с вырезаными скриптами
+     */
+    protected function cutScripts($content)
+    {
+        $pattern = "#<script.*?>.*?</script>#si";
+        preg_match_all($pattern, $content, $this->scripts);
+        if (!empty($this->scripts)) {
+            $content = preg_replace($pattern, '', $content);
+        }
+        return $content;
     }
 }

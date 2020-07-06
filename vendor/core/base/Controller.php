@@ -38,7 +38,7 @@ class Controller
     }
 
     /**
-     * Возвращает текущий вид и шаблон
+     * Выводит текущий вид и шаблон
      *
      * @return void
      */
@@ -58,7 +58,6 @@ class Controller
     {
         $this->vars = $vars;
     }
-
 
     /**
      * Провервка на Ajax запрос

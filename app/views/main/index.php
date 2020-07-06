@@ -12,6 +12,7 @@
                         </div>
                         <div class="form-group col-md-3 ">
                             <select id="inputCategory" class="form-control">
+                                <option selected='selected' class='op-def'>Все</option>
                                 <optgroup label="Автомобили">
                                     <option>Автосервисы</option>
                                     <option>Автомойки</option>
@@ -26,7 +27,7 @@
                         </div>
                         <div class="form-group col-md-2">
                             <select id="inputState" class="form-control">
-                                <option selected>Все</option>
+                                <option selected='selected' disabled="">Все</option>
                                 <option>Эстония</option>
                                 <option>Украина</option>
                                 <option>Латвия</option>

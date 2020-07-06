@@ -12,7 +12,16 @@ class MainController extends AppController
         $model = new Main;
         View::setMeta("Главная страница", 'Опиание страниицы', "Ключевые слова");
     }
+
+
     public function companyAction()
     {
+
+        //company - категории выводит
+        //company/add - добавляет компанию
+        //company/category - компании по категории
+        //company/category/id - вывод компании по id
+        if ($this->isAjax()) {
+        }
     }
 }

@@ -31,7 +31,6 @@ abstract class Model
         return $this->pdo->query($sql);
     }
 
-
     /**
      * Запрос одной записи
      *
@@ -121,6 +120,25 @@ abstract class Model
     }
 
     /**
+     * Возвращает количество записей в таблице
+     *
+     * @return int
+     */
+    public function countRow($table = '', $params = [])
+    {
+        $table = $table ?: $this->table;
+        //SELECT COUNT(*)<br />FROM Universities
+        //SELECT COUNT(*) FROM Universities WHERE Location = 'Moscow'
+        $sql = "SELECT COUNT(*) FROM $table";
+        if (!empty($params)) {
+            $key = "`" . implode("`, `", array_keys($params)) . "`";
+            $value = ":" . implode(", :", array_keys($params));
+            $sql .= " WHERE $key = $value";
+        }
+        return $this->pdo->query($sql, $params);
+    }
+
+    /**
      * Вставляет данные в базу данных
      *
      * @param array $param входные данные и поля ["username" => "foo"]
@@ -154,7 +172,6 @@ abstract class Model
         return $this->pdo->execute($sql, $params);
     }
 
-    //DELETE FROM `users` WHERE `users`.`id` = 14
     /**
      * Удаляет запись по ID
      *

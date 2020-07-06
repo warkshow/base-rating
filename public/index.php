@@ -11,23 +11,14 @@ define('APP', dirname(__DIR__) . '/app');
 define('CONFIG', dirname(__DIR__) . '/config');
 define('CACHE', dirname(__DIR__) . '/cache');
 
-
 define('LAYOUT', 'default');
-
-
-
-
 
 require ROOT . '/vendor/libs/functions.php';
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
 
+
 spl_autoload_register(function ($class) {
-    // $path = ROOT . '/' . str_replace("\\", "/", "$class.php");
-    // if (file_exists($path)) {
-    //     require_once $path;
-    // }
     $path = ROOT . '/' . str_replace('\\', '/', "$class.php");
-    // $path = APP . "/controllers/$class.php";
     if (file_exists($path)) {
         require_once $path;
     }
@@ -37,7 +28,7 @@ new App;
 $router = new Router;
 
 // Не стандартные правила
-$router->add("^company/?(?P<action> [a-z-]+)?$", ['controller' => "main"]);
+$router->add("^company/?$", ['controller' => "main", 'action' => 'company']);
 $router->add("^company/(?P<category>[a-z-]+)$", ['controller' => 'main', 'action' => 'company']);
 
 // Стандартные правила
