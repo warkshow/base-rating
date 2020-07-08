@@ -1,94 +1,26 @@
-[2020-07-08 13:10:48] Текст ошибки: syntax error, unexpected 'View' (T_STRING) | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 14
+[2020-07-08 23:53:52] Текст ошибки: Class 'app\controllers\PHPMailer' not found | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 13
 =========================================
-[2020-07-08 13:12:28] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 104
+[2020-07-08 23:53:53] Текст ошибки: Class 'app\controllers\PHPMailer' not found | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 13
 =========================================
-[2020-07-08 13:12:28] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 104
+[2020-07-08 23:53:53] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\Router.php на строке 111
 =========================================
-[2020-07-08 13:20:07] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 104
+[2020-07-08 23:59:51] Текст ошибки: syntax error, unexpected 'iler' (T_STRING) | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 14
 =========================================
-[2020-07-08 13:20:07] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 104
+[2020-07-08 23:59:52] Текст ошибки: syntax error, unexpected 'iler' (T_STRING) | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 14
 =========================================
-[2020-07-08 13:20:16] Текст ошибки: Метод <b>app\controllers\MainController::postAction</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 98
+[2020-07-08 23:59:52] Текст ошибки: syntax error, unexpected 'iler' (T_STRING) | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 14
 =========================================
-[2020-07-08 13:53:30] Текст ошибки: Undefined variable: pagination | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\views\main\company.php на строке 117
+[2020-07-08 23:59:53] Текст ошибки: syntax error, unexpected 'iler' (T_STRING) | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\controllers\MainController.php на строке 14
 =========================================
-[2020-07-08 13:53:43] Текст ошибки: Undefined variable: pagination | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\app\views\main\company.php на строке 117
+[2020-07-09 00:26:24] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\Router.php на строке 111
 =========================================
-[2020-07-08 17:23:18] Текст ошибки: Call to protected vendor\core\DataBase::__construct() from context 'vendor\widgets\menu\Menu' | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 54
+[2020-07-09 00:27:21] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\Router.php на строке 111
 =========================================
-[2020-07-08 17:29:58] Текст ошибки: Invalid argument supplied for foreach() | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 67
+[2020-07-09 00:27:26] Текст ошибки: Метод <b>app\controllers\MainController::userAction</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\Router.php на строке 105
 =========================================
-[2020-07-08 18:44:55] Текст ошибки: syntax error, unexpected '&' | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 73
+[2020-07-09 00:32:46] Текст ошибки: Страница не найдена | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\Router.php на строке 110
 =========================================
-[2020-07-08 18:45:09] Текст ошибки: Undefined index: parrent | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 69
+[2020-07-09 00:52:27] Текст ошибки: syntax error, unexpected '$data' (T_VARIABLE), expecting '(' | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\base\Model.php на строке 25
 =========================================
-[2020-07-08 18:45:09] Текст ошибки: Undefined index: parrent | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 69
-=========================================
-[2020-07-08 18:45:10] Текст ошибки: Undefined index: parrent | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 69
-=========================================
-[2020-07-08 18:45:30] Текст ошибки: Array to string conversion | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 73
-=========================================
-[2020-07-08 18:45:31] Текст ошибки: Array to string conversion | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 73
-=========================================
-[2020-07-08 18:51:17] Текст ошибки: Undefined index: parrent | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\widgets\menu\Menu.php на строке 69
-=========================================
-[2020-07-08 19:36:58] Текст ошибки: unserialize(): Error at offset 0 of 92 bytes | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\libs\Cache.php на строке 37
-=========================================
-[2020-07-08 19:39:08] Текст ошибки: unserialize(): Error at offset 0 of 92 bytes | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\libs\Cache.php на строке 37
-=========================================
-[2020-07-08 19:39:09] Текст ошибки: unserialize(): Error at offset 0 of 92 bytes | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\libs\Cache.php на строке 37
-=========================================
-[2020-07-08 19:45:07] Текст ошибки: Метод <b>app\controllers\AppController::controllersAction</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 98
-=========================================
-[2020-07-08 19:45:08] Текст ошибки: Метод <b>app\controllers\AppController::controllersAction</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 98
-=========================================
-[2020-07-08 19:51:17] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 101
-=========================================
-[2020-07-08 19:51:36] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 101
-=========================================
-[2020-07-08 19:51:43] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 101
-=========================================
-[2020-07-08 19:53:58] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:13] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:20] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:20] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:21] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:26] Текст ошибки: Контроллер <b>app\controllers\AdminController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:32] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:35] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:41] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:41] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:42] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:45] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:50] Текст ошибки: Контроллер <b>app\controllers\AdminController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:54:51] Текст ошибки: Контроллер <b>app\controllers\AdminController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:55:11] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 102
-=========================================
-[2020-07-08 19:57:48] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 106
-=========================================
-[2020-07-08 20:00:03] Текст ошибки: Контроллер <b>app\controllers\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 111
-=========================================
-[2020-07-08 20:02:07] Текст ошибки: Контроллер <b>app\controllers\AdminController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 111
-=========================================
-[2020-07-08 20:02:07] Текст ошибки: Контроллер <b>app\controllers\AdminController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 111
-=========================================
-[2020-07-08 20:02:13] Текст ошибки: Контроллер <b>app\controllers\AdminController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 111
-=========================================
-[2020-07-08 20:02:26] Текст ошибки: Контроллер <b>app\controllers\admin\UserController</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 111
-=========================================
-[2020-07-08 20:09:37] Текст ошибки: Метод <b>app\controllers\admin\UserController::showyserAction</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\core\Router.php на строке 105
+[2020-07-09 00:52:52] Текст ошибки: Метод <b>app\controllers\UserController::singInAction</b> не найден | файл: C:\Users\warks\OneDrive\domain\base-rating.eu\vendor\baserating\core\Router.php на строке 104
 =========================================

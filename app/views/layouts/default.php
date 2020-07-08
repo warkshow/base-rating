@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <?php
 
-    use vendor\core\base\View;
-    use vendor\core\DataBase;
+    use warks\core\base\View;
+    use warks\core\DataBase;
 
     View::getMeta();
 
@@ -62,15 +62,15 @@
                 </div>
                 <div class="modal-body">
                     <!-- Форма входа -->
-                    <form method="POST" action="/">
+                    <form id="loginForm">
                         <div class="form-group">
                             <label for="signInLogin">Логин</label>
-                            <input type="text" class="form-control" id="signInLogin" aria-describedby="signInLoginHelp" name="username">
+                            <input type="text" class="form-control" id="signInLogin" aria-describedby="signInLoginHelp" name="login">
                             <small id="signInLoginHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
                         <div class="form-group">
                             <label for="signInPassword">Password</label>
-                            <input type="password" class="form-control" id="signInPassword" name="userLogin">
+                            <input type="password" class="form-control" id="signInPassword" name="password">
                         </div>
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="remember" name="remember">
@@ -78,8 +78,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                            <button type="submit" class="btn btn-success" name="submit" value="submit">Вход</button>
-
+                            <button id="login" class="btn btn-success">Вход</button>
                         </div>
                     </form>
                     <!-- Конец Форма входа -->
@@ -101,14 +100,14 @@
                 </div>
                 <div class="modal-body">
                     <!-- Форма Регистрации -->
-                    <form method="post" action="/">
+                    <form id="registerForm">
                         <div class="form-group">
-                            <label for="singUpLogin">Логин</label>
-                            <input type="text" class="form-control" id="singUpLogin" name="userLogin">
+                            <label for="singUpLogin">Регистрация</label>
+                            <input type="text" class="form-control" id="singUpLogin" name="login">
                         </div>
                         <div class="form-group">
                             <label for="singUpPassword">Пароль</label>
-                            <input type="password" class="form-control" id="singUpPassword" name="userPassword">
+                            <input type="password" class="form-control" id="singUpPassword" name="password">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
@@ -195,6 +194,50 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+        $(function ($) {
+            $("#loginForm").submit(function (e) {
+                e.preventDefault();
+                login();
+            });
+            $("#registerForm").submit(function (e) {
+                e.preventDefault();
+                register();
+            });
+
+        })
+
+        function login() {
+            var data = $("#loginForm").serialize()
+
+            $.ajax({
+                type: "POST",
+                url: "user/sign-in", //"register_user.php",
+                data: data,
+                // dataType: 'json', //на всякий добавил тип ожидаемых данных
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+
+        }
+        function register() {
+            var data = $("#loginForm").serialize()
+
+            $.ajax({
+                type: "POST",
+                url: "user/sign-up", //"register_user.php",
+                data: data,
+                // dataType: 'json', //на всякий добавил тип ожидаемых данных
+                success: function (res) {
+                    console.log(res);
+                }
+            });
+
+        }
+    </script>
+
     <?php
     foreach ($scripts as $script) {
         echo $script;

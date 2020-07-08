@@ -2,7 +2,7 @@
 
 $config = [
     "components" => [
-        'cache' => 'vendor\libs\Cache'
+        'cache' => 'warks\libs\Cache'
     ],
     "settings" => []
 ];

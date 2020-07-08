@@ -210,23 +210,3 @@
         </div>
     </section>
 </section>
-
-<script>
-    $(function() {
-        $('#test').click(function() {
-            $.ajax({
-                url: 'company',
-                type: 'post',
-                data: {
-                    'id': '3'
-                },
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function() {
-                    alert("Ошибочка");
-                }
-            });
-        });
-    });
-</script>

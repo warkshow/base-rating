@@ -1,12 +1,12 @@
 <?php
 
-use vendor\core\base\App;
-use vendor\core\Router;
+use warks\core\base\App;
+use warks\core\Router;
 
 define('DEBUG', true);
 
 define('WWW', __DIR__);
-define('CORE', dirname(__DIR__) . '/vendore/core');
+define('CORE', dirname(__DIR__) . '/vendor/baserating/core');
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
 define('CONFIG', dirname(__DIR__) . '/config');
@@ -15,16 +15,10 @@ define('CACHE', dirname(__DIR__) . '/tmp/cache');
 
 define('LAYOUT', 'default');
 
-require ROOT . '/vendor/libs/functions.php';
+require ROOT . '/vendor/baserating/libs/functions.php';
+// require __DIR__ . "/../vendor/autoload.php";
+require ROOT . '/vendor/autoload.php';
 $query = rtrim($_SERVER['QUERY_STRING'], '/');
-
-
-spl_autoload_register(function ($class) {
-    $path = ROOT . '/' . str_replace('\\', '/', "$class.php");
-    if (file_exists($path)) {
-        require_once $path;
-    }
-});
 
 new App;
 $router = new Router;

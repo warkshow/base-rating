@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <?php
 
-    use vendor\core\base\View;
-    use vendor\core\DataBase;
+    use warks\core\base\View;
+    use warks\core\DataBase;
 
     View::getMeta();
 
