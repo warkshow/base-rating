@@ -60,7 +60,7 @@ class View
         if (is_array($vars)) {
             extract($vars);
         }
-        $pathView = APP . "/views/{$this->route['controller']}/{$this->view}.php";
+        $pathView = APP . "/views/{$this->route['prefix']}{$this->route['controller']}/{$this->view}.php";
         ob_start();
         if (file_exists($pathView)) {
             require $pathView;
@@ -89,16 +89,6 @@ class View
      * @param int $code код ошибки
      * @return void
      */
-    public static function Errors($code)
-    {
-        http_response_code($code);
-        $file =  APP . "/views/errors/$code.php";
-        if (file_exists($file)) {
-            require $file;
-        } else {
-            echo "Ошибка";
-        }
-    }
 
     /**
      * Задает мета теги

@@ -6,10 +6,9 @@ use PDO;
 
 class DataBase
 {
+    use TSingleton;
+
     protected $pdo;
-
-    protected static $instance;
-
     public static $countSql = 0;
     public static $queries = [];
 
@@ -21,14 +20,6 @@ class DataBase
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ];
         $this->pdo = new PDO($config["dsn"], $config['user'], $config['password'], $options);
-    }
-
-    public static function instance()
-    {
-        if (self::$instance === null) {
-            self::$instance = new self;
-        }
-        return self::$instance;
     }
 
     /**

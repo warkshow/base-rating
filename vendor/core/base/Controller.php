@@ -68,4 +68,19 @@ class Controller
     {
         return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === 'XMLHttpsRequest';
     }
+
+    /**
+     * Загружает вид для ajax запроса
+     *
+     * @param string $view название вида
+     * @param array $vars переданные данные
+     * @return void
+     */
+    public function loadView($view, $vars = [])
+    {
+        if (!empty($vars)) {
+            extract($vars);
+        }
+        require APP . "/views/{$this->route['controller']}/{$view}.php";
+    }
 }

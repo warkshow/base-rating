@@ -34,7 +34,7 @@ class Cache
     {
         $fileCache = $this->getFile($key);
         if (file_exists($fileCache)) {
-            $content = unserialize($fileCache);
+            $content = unserialize(html_entity_decode($fileCache));
             if (time() <= $content['end_time']) {
                 return $content['data'];
             }

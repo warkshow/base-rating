@@ -2,6 +2,7 @@
 
 namespace vendor\core\base;
 
+use vendor\core\ErrorHandler;
 use vendor\core\Registry;
 
 class App
@@ -11,5 +12,6 @@ class App
     public function __construct()
     {
         self::$app = Registry::instance();
+        new ErrorHandler();
     }
 }

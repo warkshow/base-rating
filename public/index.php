@@ -1,15 +1,17 @@
 <?php
-error_reporting(E_ALL);
 
 use vendor\core\base\App;
 use vendor\core\Router;
+
+define('DEBUG', true);
 
 define('WWW', __DIR__);
 define('CORE', dirname(__DIR__) . '/vendore/core');
 define('ROOT', dirname(__DIR__));
 define('APP', dirname(__DIR__) . '/app');
 define('CONFIG', dirname(__DIR__) . '/config');
-define('CACHE', dirname(__DIR__) . '/cache');
+define('TEMP', dirname(__DIR__) . '/tmp');
+define('CACHE', dirname(__DIR__) . '/tmp/cache');
 
 define('LAYOUT', 'default');
 
@@ -30,6 +32,10 @@ $router = new Router;
 // Не стандартные правила
 $router->add("^company/?$", ['controller' => "main", 'action' => 'company']);
 $router->add("^company/(?P<category>[a-z-]+)$", ['controller' => 'main', 'action' => 'company']);
+
+// Админ правила
+$router->add("^admin$", ['controller' => 'user', 'action' => 'index', 'prefix' => 'admin']);
+$router->add("^admin/?(?P<controller>[a-z-]+)/?(?P<action>[a-z-]+)?$",  ['prefix' => 'admin']);
 
 // Стандартные правила
 $router->add('^$', ['controller' => 'main', 'action' => 'index']);

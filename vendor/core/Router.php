@@ -2,7 +2,7 @@
 
 namespace vendor\core;
 
-use vendor\core\base\View;
+use Exception;
 
 class Router
 {
@@ -66,6 +66,13 @@ class Router
                 if (!isset($route['action'])) {
                     $route['action'] = 'index';
                 }
+                // prefix for admin controllers
+                if (!isset($route['prefix'])) {
+                    $route['prefix'] = '';
+                } else {
+                    $route['prefix'] .= '\\';
+                }
+
                 $route['controller'] = $this->upperCamelCase($route['controller']);
                 $this->route = $route;
                 return true;
@@ -85,7 +92,7 @@ class Router
         $url = $this->removeQueryString($url);
         if ($this->matchRoute($url)) {
 
-            $controllerPath = 'app\controllers\\';
+            $controllerPath = "app\controllers\\{$this->route['prefix']}";
             $controller = $controllerPath . $this->upperCamelCase($this->route['controller']) . "Controller";
 
             if (class_exists($controller)) {
@@ -95,13 +102,13 @@ class Router
                     $controllerObject->$action();
                     $controllerObject->getView();
                 } else {
-                    echo "Метод <b>$controller::$action</b> не найден";
+                    throw new Exception("Метод <b>$controller::$action</b> не найден");
                 }
             } else {
-                echo "Контроллер <b>$controller</b> не найден";
+                throw new Exception("Контроллер <b>$controller</b> не найден");
             }
         } else {
-            View::Errors(404);
+            throw new Exception("Страница не найдена", 404);
         }
     }
 
