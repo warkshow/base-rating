@@ -16,27 +16,77 @@ body {
     box-shadow: 0 10px 30px rgba(0, 22, 40, .2);
     cursor: pointer;
 }
-.company-tile a{
+
+.company-tile a {
     color: #000;
     text-decoration: none;
 }
-.company-tile a:hover{
+
+.company-tile a:hover {
     color: #000;
     text-decoration: none;
     color: rgb(31, 76, 224);
 }
-.content-border-white{
+
+.content-border-white {
     background-color: #fff;
     width: 100%;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, .125);
     padding: 15px;
 }
-footer .copyright{
+
+footer .copyright {
     font-size: .75rem;
     line-height: 1.33333;
     border-top: 1px solid #e0e0e0;
     padding-top: 20px;
 }
-.op-def{
+
+.op-def {
     display: none;
 }
+
+.errorForms {
+    display: none;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 5px;
+}
+/*  */
+.tab-card {
+    border:1px solid #eee;
+  }
+  
+  .tab-card-header {
+    background:none;
+  }
+  /* Default mode */
+  .tab-card-header > .nav-tabs {
+    border: none;
+    margin: 0px;
+  }
+  .tab-card-header > .nav-tabs > li {
+    margin-right: 2px;
+  }
+  .tab-card-header > .nav-tabs > li > a {
+    border: 0;
+    border-bottom:2px solid transparent;
+    margin-right: 0;
+    padding: 2px 15px;
+  }
+  
+  .tab-card-header > .nav-tabs > li > a.show {
+      border-bottom:2px solid #007bff;
+      color: #007bff;
+  }
+  .tab-card-header > .nav-tabs > li > a:hover {
+      color: #007bff;
+  }
+  
+  .tab-card-header > .tab-content {
+    padding-bottom: 0;
+  }
+  .nav-item > .active{
+      color: #007bff;
+  }

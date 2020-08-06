@@ -10,7 +10,6 @@
 
     View::getMeta();
 
-
     ?>
     <!-- Required meta tags -->
 
@@ -67,7 +66,11 @@
         </div>
     </div>
 
-    <?php echo $content; ?>
+    <?php
+        if(isset($content)){
+            echo $content;
+        }
+    ?>
 
     <footer>
         <div class="container-fluid content-border-white p-0">
